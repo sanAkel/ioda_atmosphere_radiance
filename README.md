@@ -10,10 +10,12 @@ prepare nc4 diag files
 example usage:
 ----------------
 convert_bin2nc.csh airs aqua
+
 convert_bin2nc.csh avhrr metop-a
+
 convert_bin2nc.csh amsua metop-a
+
 convert_bin2nc.csh iasi metop-a
-convert_bin2nc.csh avhrr n18
 
 example output:
 ---------------
