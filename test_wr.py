@@ -112,22 +112,22 @@ def write_nc_obs( inFile, fName_out, date, sensor, satellite, \
 	file_.Satellite_Sensor      = '%s_%s'%(sensor, satellite)
 	file_.Satellite             = '%s'%(satellite)
 	file_.Observation_type      = '%s'%(sensor)
-	file_.Outer_Loop_Iteration  = '1\0'# should be read in
-	file_.Number_of_channels    = '%d'%(nchans)
-	file_.Number_of_Predictors  = '12\0'# It is set to 12 in the amsua_n19 test input. Shouldn't be 7?
-	file_.date_time             = '%s'%(int(date.strftime('%Y%m%d%H')))
-	file_.ireal_radiag          = '30\0'# following are hard coded, should be read in.
-	file_.ipchan_radiag         = '8\0' 
-	file_.iextra                = '0\0'
-	file_.jextra                = '0\0'
-	file_.idiag                 = '23\0'# why not 17?
-	file_.angord                = '4\0'# why not 0?		
-	file_.iversion_radiag       = '40000\0'# why not 30303?		
-	file_.New_pc4pred	    = '1\0'# why not 0?		
-	file_.ioff0                 = '23\0'# should be 17 as idiag		
-	file_.ijacob                = '0\0'# is this to write/read Jacobian? What is it?		
-	file_.jac_nnz		    = '323\0'# what's this??
-	file_.jac_nind              = '8\0'# and this as well??		
+	file_.Outer_Loop_Iteration  = np.int32( 1,     dtype=np.int32) # should be read in
+	file_.Number_of_channels    = np.int32('%d'%(nchans), dtype=np.int32)
+	file_.Number_of_Predictors  = np.int32( 1,     dtype=np.int32) # It is set to 12 in the amsua_n19 test input. Shouldn't be 7?
+	file_.date_time             = np.int32('%d'%(int(date.strftime('%Y%m%d%H'))), dtype=np.int32)
+	file_.ireal_radiag          = np.int32( 30,    dtype=np.int32) # following are hard coded, should be read in.
+	file_.ipchan_radiag         = np.int32( 8,     dtype=np.int32) 
+	file_.iextra                = np.int32( 0,     dtype=np.int32)
+	file_.jextra                = np.int32( 0,     dtype=np.int32)
+	file_.idiag                 = np.int32( 23,    dtype=np.int32) # why not 17?
+	file_.angord                = np.int32( 4,     dtype=np.int32) # why not 0?		
+	file_.iversion_radiag       = np.int32( 40000, dtype=np.int32) # why not 30303?		
+	file_.New_pc4pred	    = np.int32( 1,     dtype=np.int32) # why not 0?		
+	file_.ioff0                 = np.int32( 23,    dtype=np.int32)# should be 17 as idiag		
+	file_.ijacob                = np.int32( 0,     dtype=np.int32)# is this to write/read Jacobian? What is it?		
+	file_.jac_nnz		    = np.int32( 323,   dtype=np.int32) # what's this??
+	file_.jac_nind              = np.int32( 8,     dtype=np.int32) #and this as well??		
 
         file_.title       = 'satellite radiance observations test input file'
         file_.institution = 'NASA, GMAO'
